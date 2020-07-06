@@ -1,3 +1,3 @@
 # HaedalDataCenter
 
-![main](main2.png)
+![main](main.png)
