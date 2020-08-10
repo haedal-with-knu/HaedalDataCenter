@@ -6,7 +6,7 @@
 
 **모두의 데이터분석 with 파이썬**
 
-1. [기온 공공 데이터](moduDataAnalysisWithPython\01\README.md)
+1. [기온 공공 데이터](moduDataAnalysisWithPython/01/README.md)
 2. [데이터 시각화 기초](moduDataAnalysisWithPython\02\README.md)
 3. [인구 공공 데이터](moduDataAnalysisWithPython\03\README.md)
 4. [대중교통 데이터 프로젝트](moduDataAnalysisWithPython\04\README.md)
