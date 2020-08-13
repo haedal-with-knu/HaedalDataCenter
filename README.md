@@ -18,7 +18,7 @@
 
 1. [회귀분석-데이터과학의주역](regressionAnalysisWithPython/01/README.md)
 2. [단순 선형 회귀분석 접근](regressionAnalysisWithPython/02/README.md)
-3. [다중 회귀분석](regressionAnalysisWithPython/03/README.md)
+3. [다중 회귀분석](regressionAnalysisWithPython/03/Chapter3_Multiple_Regression_Analysis.ipynb)
 4. [로지스틱 회귀분석](regressionAnalysisWithPython/04/README.md)
 5. [데이터 준비](regressionAnalysisWithPython/05/README.md)
 6. [일반화 달성](regressionAnalysisWithPython/06/README.md)
