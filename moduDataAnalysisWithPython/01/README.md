@@ -6,11 +6,11 @@
 
 2. 기온 데이터를 사용할 것이기 때문에 기후통계분석->기온분석을 눌러줍니다.   
 기간과 지역을 선택해서 데이터를 얻을 수 있습니다.
-![main](img/기온1.PNG)
+![main](img/기온1.PNG)   
 또한 CSV나 Excel 파일로 데이터를 저장 할 수 있습니다. CSV파일로 데이터를 저장해 봅시다.
 
 3. CSV파일이란? Comma-Separated Values로 데이터 값을 콤마(,)로 구분하는 파일 형식입니다.
-![csv](img/csv.PNG)
+![csv](img/csv.PNG)   
 다음 파일은 순서대로 일시,평균기온,최고기온,최고기온 시각,최저기온,최저기온 시각을 나타냅니다.
 
 4. 본격적으로 데이터분석을 시작하기 위해 환경을 설정해 줘야 합니다. 파이썬을 사용할건데 필요한 라이브러리를 편하게 불러오기 위해 아나콘다를 설치해주세요.
@@ -29,7 +29,7 @@ data=csv.reader(f,delimiter=',') #읽어온 데이터를 ,를 기준으로 분�
 print(data)
 f.close
 ```
-![result1](img/result1.PNG)
+![result1](img/result1.PNG)   
 ->data객체를 출력한 결과값
 
 4. 데이터 값을 실제로 출력하기
@@ -41,7 +41,7 @@ for row in data: #for문을 이용하여 데이터를 한 줄씩 읽어오기
     print(row)
 f.close
 ```
-![result2](img/result2.PNG)
+![result2](img/result2.PNG)   
 ※ 예전 데이터는 기온 값이 누락된 경우가 있습니다.
 
 5. 헤더 저장하기   
@@ -54,7 +54,7 @@ header=next(data) #next() 첫 번째 데이터 행을 읽어오고 데이터 탐
 print(header)
 f.close
 ```
-![result3](img/result3.PNG)
+![result3](img/result3.PNG)   
 
 ## UNIT03 대구가 가장 더웠던 날 구해보기
 1. 데이터를 읽어온 후 최고 기온을 확인합니다.
@@ -78,6 +78,6 @@ for row in data:
 print(max,max_date)
 f.close()
 ```
-![result4](img/result4.PNG)
+![result4](img/result4.PNG)   
 -> 대구가 가장 더웠던 날은 1942년 8월 1일이고 그 때의 기온은 40도였습니다!
 
