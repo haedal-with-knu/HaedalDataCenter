@@ -2,7 +2,7 @@
 
 ## `회귀분석(Regression Analysis)` 이란?
 
-![유중혁](C:\Users\Joowon\Desktop\haedaldatacenter\regressionAnalysisWithPython\01\images\유중혁.jpg)
+![유중혁](images/1.jpg)
 
 ~~전지적 독자 시점의 회귀자 유중혁과는 관계가 없다~~ ~~어쩌면..있을지도?~~
 
