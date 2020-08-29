@@ -84,6 +84,7 @@ y_test = np.asarray(dataset.iloc[463715:, 0])
 ```  
 <br/>  
 1. **바닐라 선형회귀** 를 사용하여 훈련시간, 훈련 집합 및 테스트 집합의 MAE 출력
+
 ```python
 from sklearn.linear_model import LinearRegression, SGDRegressor
 from sklearn.model_selection import KFold
@@ -100,6 +101,7 @@ print("MAE train set:", mean_absolute_error(y_train, regr.predict(X_train)))
 
 print("MAE test set:", mean_absolute_error(y_test, regr.predict(X_test)))
 ```
+
 Training time [s]: 1.395022800001243  
 MAE train set: 6.79557016726623  
 MAE test set: 6.800496463186952  
@@ -108,6 +110,7 @@ MAE test set: 6.800496463186952
 훈련 집합의 MAE와 테스트 집합의 MAE 사이에 거의 차이가 없으므로 학습자는 안정적이라고 할 수 있습니다.  
 <br/>
 2. **SDG 회귀** 를 사용하여 훈련 시간, 훈련 집합 및 테스트 집합의 MAE 출력
+
 ```python
 regr = SGDRegressor()
 
@@ -118,6 +121,7 @@ print("Training time [s]", time.perf_counter()-tic)
 print("MAE train set:", mean_absolute_error(y_train, regr.predict(X_train)))
 print("MAE test set:", mean_absolute_error(y_test, regr.predict(X_test)))
 ```
+
 Training time [s] 66.66515119999895  
 MAE train set: 412291516418517.0  
 MAE test set: 418348223735912.0  
