@@ -23,17 +23,17 @@ matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합�
 [그림 13-3]
 
 내용을 살펴보면 지금까지 배운 내용들이 잘 정리되어 있습니다. 그중에서 다음과 같은 코드와 실행 결과가 보입니다.
-
+```python
     import matplotlib.pyplot as plt
     import numpy as np
     t = np.arange(0., 5., 0.2)
     plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
     plt.show()
-
+```
 [그림 13-4]
 
 코드 2행을 보니 numpy 라이브러리를 np라는 별명으로 부르는 것을 확인할 수 있습니다. 이 코드는 파이썬 리스트를 사용해서 다음과 같이 구현할 수 있습니다.
-
+```python
     import matplotlib.pyplot as plt
     t = []
     p2 = []
@@ -44,7 +44,7 @@ matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합�
         p3.append((i / 10) ** 3)
     plt.plot(t, t, 'r--', t, p2, 'bs', t, p3, 'g^')
     plt.show()
-
+```
 실행하면 그림 13-4와 동일한 그래프가 나옵니다.
 numpy 라이브러리를 사용한 코드와 파이썬 리스트를 사용한 코드의 실행 결과는 똑같지만, numpy 라이브러리를 사용한 경우가 훨씬 적은 수의 코드로 작성하여 간결합니다.
 그리고 홈페이지에 소개된 내용을 더 살펴보면 이 예제뿐만 아니라 다른 예제에서도 np로 시작하는 numpy 라이브러리를 활용하는 코드들을 많이 볼 수 있습니다.
@@ -53,10 +53,10 @@ numpy 라이브러리를 사용한 코드와 파이썬 리스트를 사용한 �
 ### 2. numpy 라이브러리 시작하기
 
 먼저 간단한 함수부터 살펴보겠습니다. 다음 코드는 2의 제곱근을 출력합니다.
-
+```python
     import numpy
     print(numpy.sqrt(2))
-
+```
 
     실행 결과: 1.4142135623730951
 
