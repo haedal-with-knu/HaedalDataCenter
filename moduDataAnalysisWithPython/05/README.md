@@ -129,7 +129,7 @@ numpy 라이브러리에는 다양한 서브(sub) 라이브러리가 있는데 �
 0부터 5까지의 숫자가 랜덤으로 출력되는 실행 결과를 보며, 각 숫자가 출력되는 횟수를 쉽게 확인하는 방법을 고민할 수 있습니다. 히스토그램을 그려 각 숫자의 빈도가 한눈에 들어오도록 합시다.
 그리고 numpy 라이브러리의 장점을 확인하기 위해 Unit 6에서 random 라이브러리와 리스트를 사용했던 코드와 비교해 보겠습니다.
 
-        **numpy를 사용한 코드**
+**numpy를 사용한 코드**
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -138,7 +138,8 @@ numpy 라이브러리에는 다양한 서브(sub) 라이브러리가 있는데 �
     plt.hist(dice, bins =6)
     plt.show()
 
-        **Unit 6에서 사용한 코드**
+**Unit 6에서 사용한 코드**
+
     import matplotlib.pyplot as plt
     import numpy as np
     dice = []
