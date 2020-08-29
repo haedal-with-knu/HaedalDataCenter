@@ -82,7 +82,7 @@ X_test = dataset.iloc[463715:, 1:]
 y_test = np.asarray(dataset.iloc[463715:, 0])
 ```
 <br/>
-1. **바닐라 선형회귀**를 사용하여 훈련 시간, 훈련 집합 및 테스트 집합의 MAE 출력   
+1. **바닐라 선형회귀**를 사용하여 훈련 시간, 훈련 집합 및 테스트 집합의 MAE 출력   <br/>
 
 ```{.python}
 from sklearn.linear_model import LinearRegression, SGDRegressor
@@ -105,7 +105,7 @@ print("MAE test set:", mean_absolute_error(y_test, regr.predict(X_test)))
   MAE test set: 6.800496463186952   <br/>
 약 1.4초 만에 MAE 6.8을 얻을 수 있습니다.  
 훈련 집합의 MAE와 테스트 집합의 MAE 사이에 거의 차이가 없으므로 학습자는 안정적이라고 할 수 있습니다.<br/>
-2. **SDG 회귀**를 사용하여 훈련 시간, 훈련 집합 및 테스트 집합의 MAE 출력   
+2. **SDG 회귀**를 사용하여 훈련 시간, 훈련 집합 및 테스트 집합의 MAE 출력   <br/>
 
 ```{.python}
 regr = SGDRegressor()
