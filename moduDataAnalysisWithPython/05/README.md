@@ -17,11 +17,11 @@ matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합�
 검색 결과 페이지에서 스크롤을 내려 Pyplot tutorial을 클릭합니다.
 
 내용을 살펴보면 지금까지 배운 내용들이 잘 정리되어 있습니다. 그중에서 다음과 같은 코드와 실행 결과가 보입니다.
-''' python
-import matplotlib.pyplot as plt
-import numpy as np
-t = np.arange(0., 5., 0.2)
-plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
-plt.show()
-'''
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    t = np.arange(0., 5., 0.2)
+    plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
+    plt.show()
+
 코드 2행을 보니 numpy 라이브러리를 np라는 별명으로 부르는 것을 확인할 수 있습니다.
