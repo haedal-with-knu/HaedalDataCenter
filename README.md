@@ -19,7 +19,7 @@
 1. [회귀분석-데이터과학의주역](regressionAnalysisWithPython/01/README.md)
 2. [단순 선형 회귀분석 접근](regressionAnalysisWithPython/02/README.md)
 3. [다중 회귀분석](regressionAnalysisWithPython/03/Chapter3_Multiple_Regression_Analysis.ipynb), [[수업자료]](regressionAnalysisWithPython/meta/datacenter_0722.ipynb)
-4. [로지스틱 회귀분석](regressionAnalysisWithPython/04/README.md), [[수업자료]](regressionAnalysisWithPython/meta/datacenter_0727.ipynb)
+4. [로지스틱 회귀분석](https://github.com/LJBang/HDC_DataStudy/blob/master/4_Logistic.ipynb), [[수업자료]](regressionAnalysisWithPython/meta/datacenter_0727.ipynb)
 5. [데이터 준비](regressionAnalysisWithPython/05/README.md), [[수업자료]](regressionAnalysisWithPython/meta/datacenter_0729.ipynb)
 6. [일반화 달성](regressionAnalysisWithPython/06/README.md), [[수업자료]](regressionAnalysisWithPython/meta/datacenter_0803.ipynb)
 7. [온라인과 일괄학습](regressionAnalysisWithPython/07/README.md)
