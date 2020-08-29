@@ -99,3 +99,100 @@ numpy 라이브러리에는 다양한 서브(sub) 라이브러리가 있는데 �
 
     실행 결과: [1 5 3 0 5 1 0 4 0 1]
 
+실행 결과에서 짐작할 수 있듯이 0~5 사이의 숫자를 랜덤하게 10번 선택했습니다. 만약 한 번 뽑은 숫자를 다시 뽑지 못하게 하고 싶다면 replace 속성을 False로 설정하면 됩니다.
+다음처럼 말이죠.
+
+    print(np.random.choice(10, 6, replace=False))
+
+    실행 결과: [1 8 3 4 7 2]
+
+    Tip: 여기에서는 0~9 사이에 있는 숫자를 중복 없이 6번 뽑았습니다.
+
+여기에 확률을 지정할 수 잇는 p 속성을 추가하겠습니다. p 속성은 각 경우의 수가 발생할 확률을 정할 수 있습니다. 0~5까지의 경우가 발생할 수 있으므로 0이 나올 확률부터 5가 나올 확률까지 하나씩 지정할 수 있습니다.
+따라서 이 경우에는 p 속성에 6개의 확률이 있어야 하고 그 합이 반드시 1이어야 합니다. 0은 0.1, 1은 0.2, 2는 0.3, 3은 0.2, 4는 0.1, 5는 0.1의 확률을 지정하여 프로그램을 실행하겠습니다.
+
+    import numpy as np
+    print(np.random.choice(6, 10, p=[0.1, 0.2, 0.3, 0.2, 0.1, 0.1]))
+
+    실행 결과: [4 1 1 2 2 1 2 2 1 3]
+
+0과 5는 나오지 않았고 1이 네번, 2가 4번, 3이 1번, 4가 1번 나왔네요. 한 번 더 실행하겠습니다.
+
+    실행 결과: [1 2 1 2 2 2 2 2 4 2]
+
+이번에는 0과 3과 5가 나오지 않았고, 1이 2번, 2가 6번, 4가 1번 나왔습니다. 꼭 우리가 정한 확률대로 결과가 나오지는 않는 것 같습니다.
+더 많은 숫자를 발생시킨다면 p 속성으로 지정한 확률에 대한 검증이 가능할 것 같습니다. 얼마나 많은 숫자를 발생시켜야 할까요?
+궁금증을 가지고 다음 내용으로 넘어가 봅시다.
+
+### 3. numpy 라이브러리를 활용해 그래프 그리기
+
+0부터 5까지의 숫자가 랜덤으로 출력되는 실행 결과를 보며, 각 숫자가 출력되는 횟수를 쉽게 확인하는 방법을 고민할 수 있습니다. 히스토그램을 그려 각 숫자의 빈도가 한눈에 들어오도록 합시다.
+그리고 numpy 라이브러리의 장점을 확인하기 위해 Unit 6에서 random 라이브러리와 리스트를 사용했던 코드와 비교해 보겠습니다.
+
+        **numpy를 사용한 코드**
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    dice = np.random.choice(6, 10)
+
+    plt.hist(dice, bins =6)
+    plt.show()
+
+        **Unit 6에서 사용한 코드**
+    import matplotlib.pyplot as plt
+    import numpy as np
+    dice = []
+    for i in range(10) :
+        dice.append(np.random.randint(1,6))
+    
+    plt.hist(dice, bins = 6)
+    plt.show()
+
+[그림 13_5]
+
+두 코드를 비교하니 결과는 같지만, numpy를 사용한 코드가 더 간결합니다.
+그러고 반복 횟수를 10번이 아니라 100만 번으로 바꿔서 각각의 코드를 실행하면 numpy를 사용한 코드의 실행 속도가 훨씬 빠르다는 것을 느낄 수 있습니다.
+여기에서 다음과 같이 p 속성으로 확률을 설정항여 결과를 확인하겠습니다.
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    dice = np.random.choice(6, 1000000, p=[0.1, 0.2, 0.3, 0.2, 0.1, 0.1])
+    plt.hist(dice, bins = 6)  #0,1,2,3,4,5 중 랜덤으로 추출한 숫자를 히스토그램 표현
+    plt.show()
+
+[그림 13_6]
+
+반복 횟수를 늘려 더 많은 개수의 숫자를 랜덤으로 추출한 결과를 히스토그램으로 나타냈습니다. 그림 13-5와는 다르게 우리가 설정한 확률에 따라 각각의 값들이 나온 것을 확인할 수 있습니다.
+다음은 Unit 10에서 그렸던 버블 차트를 numpy 라이브러리를 활용해서 다시 그리는 코드입니다. 반복문을 사용하지 않아서 코드가 간결해진 것을 느낄 수 잇을 겁니다.
+
+<U>**코드**</U> **numpy를 사용한 버블 차트 그리기 코드**
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = np.random.randint(10, 100, 200)
+    y = np.random.randint(10, 100, 200)
+    size = np.random.randint(100)
+
+    plt.scatter(x, y, s=size, c=x, cmap='jet', alpha=0.7)
+    plt.colorbar()
+    plt.show()
+
+<U>**코드**</U> **Unit 10에서 사용한 버블 차트 코드**
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = []
+    y = []
+    size = []
+
+    for i in range(200) :
+        x.append(np.random.randint(10,100))
+        y.append(np.random.randint(10,100))
+        size.append(np.random.randint(10,100))
+
+    plt.scatter(x, y, s=size, c=x, cmap='jet', alpha=0.7)
+    plt.colorbar()
+    plt.show()
+
