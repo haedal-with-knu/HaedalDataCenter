@@ -5,8 +5,10 @@
 
 * 데이터셋 다운로드
 
-`pip install requests'  
-'''python
+```python
+pip install requests
+```
+```python
 try:
     import urllib.request as urllib2
 except:
@@ -50,14 +52,5 @@ def gzip_from_UCi(UCI_url, dest):
         print ('\tgunzipping %s' % filename)
         cnt = decompressed_file.read()
         outfile.write(cnt)
-'''
-
+```
 * 회귀문제 데이터셋 다운로드
-
-```python
-UCI_url = 'https://archive.ics.uci.edu/ml/machine-learningdatabases/00203/YearPredictionMSD.txt'
-```  
-
-'''python
-!head -2 ./msd/YearPredictionMSD.txt
-'''
