@@ -399,3 +399,24 @@ numpy에서는 이런 상황을 배열 전체에 조건을 적용해서 다음�
 이 외에도 마스크는 다양하게 활용될 수 있는데요. 그림 13-7에서 만들었던 버블 차트에 마스크를 적용하면 어떤 그래프가 그려질지 직접 확인하세요!
 
 ### numpy 라이브러리를 사용하여 재미있는 버블 차트 그리기
+
+```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+    x = np.random.randint(-100, 100, 1000) # 1000개의 랜덤 값 추출
+    y = np.random.randint(-100, 100, 1000) # 1000개의 랜덤 값 추출
+    size = np.random.randint(100)
+    mask1 = abs(x) >50               # x에 저장된 값 중 절댓값이 50보다 큰 값 걸러 냄
+    mask2 = abs(y) >50               # y에 저장된 값 중 절댓값이 50보다 큰 값 걸러 냄
+    x = x[mask1+mask2]               # mask1과 mask2 중 하나라도 만족하는 값 저장
+    y = y[mask1+mask2]               # mask1과 mask2 중 하나라도 만족하는 값 저장
+    plt.scatter(x, y, s=size, c=x, cmap='jet', alpha=0.7)
+    plt.colorbar()
+    plt.show()
+```
+
+**실행결과**
+[그림13-10]
+
+지금까지 numpy 라이브러리와 아주 기초적인 사용 방법을 살펴보았습니다. 이 책에서는 numpy array의 내부 원리 등은 다루지 않고 이 정도 수준에서 가볍게 활용하는 방법만을 다룹니다.
+만약 더 자세한 내용이 궁금하다면 전문적인 도서를 읽어보거나, 인터넷에 있는 numpy 문서들을 참고하세요.
