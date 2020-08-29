@@ -5,7 +5,7 @@
 
 * 데이터셋 다운로드
 
-'pip install requests'
+`pip install requests'  
 '''python
 try:
     import urllib.request as urllib2
@@ -54,9 +54,9 @@ def gzip_from_UCi(UCI_url, dest):
 
 * 회귀문제 데이터셋 다운로드
 
-'''python
+```python
 UCI_url = 'https://archive.ics.uci.edu/ml/machine-learningdatabases/00203/YearPredictionMSD.txt'
-'''   
+```  
 
 '''python
 !head -2 ./msd/YearPredictionMSD.txt
