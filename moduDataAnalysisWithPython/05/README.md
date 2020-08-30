@@ -16,7 +16,7 @@ matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합�
 튜토리얼(tutorial)은 자습서 또는 안내서 성격의 문서로, matplotlib 라이브러리 뿐만 아니라 새로운 내용을 배울 때 '(찾고자 하는)키워드 tutorial'과 같은 형태로 검색하면 처음 시작할 때 큰 도움이 되는 내용을 찾을 수 있습니다.
 연습 삼아서 검색 창에 numpy tutorial이라는 검색어를 입력해보세요.
 
-![그림 13-2](C:\Users\USER\Documents\GitHub\img\13_1.jpg)
+![그림 13-2](C:\Users\USER\Documents\GitHub\img\13_2.png)
 
 검색 결과 페이지에서 스크롤을 내려 Pyplot tutorial을 클릭합니다.
 
