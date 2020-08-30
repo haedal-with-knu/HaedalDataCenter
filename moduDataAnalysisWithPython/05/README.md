@@ -1222,12 +1222,91 @@ A열 값을 기준으로 전체 데이터에 대한 뺄셈이 이루어졌기 �
 ```python
     import pandas as pd
     df = pd.read_csv('age.csv', encoding='cp949', index_col=0)
-    df = df.div(df['총 인구수'], axis=0) # 전체 데이터를 총 인구수로 나눠서 비율로 변환
-    del df['총 인구수'], df['연령구간인구수'] # 총인구수, 연령구간인구수 열 삭제
+    df = df.div(df['총인구수'], axis=0) # 전체 데이터를 총 인구수로 나눠서 비율로 변환
+    del df['총인구수'], df['연령구간인구수'] # 총인구수, 연령구간인구수 열 삭제
 ```
 
 **TIP** 만약 오류가 나왔다면 코드의 열 이름과 age.csv 파일의 열 이름이 같은지 확인하세요. 예를 들어 age.csv 파일의 열 이름이 '총인구수'가 아니라 '2019년02월_계_총인구수'라면 코드를 변경하거나, csv 파일 내 열 이름을 변경해야 합니다.
 
 * **2~3**| **궁금한 지역 이름 입력받고 해당 지역의 인구 구조 저장하기**
 
-input() 함수로 알고자 하는
+input() 함수로 알고자 하는 지역의 이름을 입력받고 해당 지역의 인구 구조를 저장합니다. df.index.str.contains() 함수는 데이터 프레임의 인덱스 문자열에 원하는 문자열이 포함된 행을 찾아냅니다.
+```python
+    name = input('원하는 지역의 이름을 입력해주세요 : ') # 지역 이름 입력
+    a = df.index.str.contains(name) # 해당 행을 찾아서 해당 지역의 인구 구조를 저장
+    df2 = df[a]
+    df2
+```
+
+[그림 15-18]
+
+데이터를 그래프로 그리려면 행과 열을 바꾼 후 plot() 함수를 실행하면 됩니다.
+```python
+    import matplotlib.pyplot as plt
+    plt.rc('font', family='Malgun Gothic')
+    df2.T.plot()
+    plt.show()
+```
+
+[그림 15-19]
+
+* **4~5**| **궁금한 지역의 인구 구조와 가장 비슷한 인구 구조를 가진 지역 시각화하기**
+
+이제 데이터를 처리하는 가장 중요한 부분입니다. 여기에서는 각 알고리즘 코드를 개별로 살펴본 후, 마지막에 전체 코드를 실행하여 결과를 확인하겠습니다.
+먼저 궁금한 지역의 연령별 비율과 다른 지역의 연령별 비율의 차이를 계산합니다. 그리고 궁금한 지역의 연령별 비율과 다른 지역의 연령별 비율의 차이를 계산합니다.
+```python
+    import numpy as np # 1. 궁금한 지역 A의 인구 비율에서 B의 인구 비율을 뺀다.
+    x = df.sub(df2.iloc[0], axis=1) # 2. A의 인구 비율에서 B의 인구 비율을 뺀 값의 제곱 값을 모두 더한다.
+    y = np.power(x, 2)
+    z = y.sum(axis=1)
+```
+
+Unit 14에서는 궁금한 지역의 연령별 비율과 다른 지역의 연령별 비율의 차이를 계산하여 가장 차이가 작은 지역 한 곳을 찾았습니다. 예를 들어, '신도림동'을 입력하면 '서울특별시 구로구 구로제1동' 한 곳의 결과만 볼 수 있었습니다. 하지만 pandas의 sort_values() 정렬 함수와 슬라이싱을 이용하면 상위 몇 개 지역까지 쉽게 찾을 수 있습니다.
+```python
+    i = z.sort_values().index[:5]  # 3. 그 차이가 가장 작은 지역 5곳을 찾는다.
+```
+
+이제 결과를 꺾은선 그래프로 그려주면 이렇게 표현됩니다.
+```python
+    df.loc[i].T.plot()   # 4. 3 결과를 꺾은선 그래프로 보여준다
+    plt.show()
+```
+
+지금가지 내용을 정리하면 다음과 같습니다.
+```python
+    import numpy as np # 1. 궁금한 지역 A의 인구 비율에서 B의 인구 비율을 뺀다.
+    x = df.sub(df2.iloc[0], axis=1) # 2. A의 인구 비율에서 B의 인구 비율을 뺀 값의 제곱 값을 모두 더한다.
+    y = np.power(x, 2)
+    z = y.sum(axis=1)
+    i = z.sort_values().index[:5]  # 3. 그 차이가 가장 작은 지역 5곳을 찾는다.
+    df.loc[i].T.plot()   # 4. 3 결과를 꺾은선 그래프로 보여준다
+```
+
+이처럼 4| 과정에 해당하는 코드를 이해하기 쉽게 다섯 줄로 작성하였지만, 다음과 같이 한 줄로 줄일 수도 있습니다.
+```python
+    #4| 궁금한 지역의 인구 구조와 가장 비슷한 인구 구조를 가진 지역 찾기
+    df.loc[np.power(df.sub(df2.iloc[0], axis=1), 2).sum(axis=1).sort_values().index[:5]].T.plot()
+```
+
+그리고 이를 전체 코드로 나타내면 다음과 같습니다.
+
+### 우리 동네와 인구 구조와 비슷한 지역들을 그래프로 나타내기(pandas 사용)
+```python
+    import pandas as pd
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    plt.rc('font', family='Malgun Gothic')
+    df = pd.read_csv('age.csv', encoding='cp949', index_col=0)
+    df = df.div(df['총인구수'], axis=0)
+    del df['총인구수'], df['연령구간인구수']
+
+    name = input('원하는 지역의 이름을 입력해주세요 : ')
+    a = df.index.str.contains(name)
+    df2 = df[a]
+    df.loc[np.power(df.sub(df2.iloc[0], axis=1), 2).sum(axis=1).sort_values().index[:5]].T.plot()
+
+    plt.show()
+```
+
+결국 이 프로젝트를 pandas로 작성한 코드는 import 구문 위 세 줄을 포함해서 12줄 밖에 되지 않습니다. 물론 pandas를 더 깊이 이해하려면 많은 노력이 필요합니다. 하지만 이 책에서는 이렇게 간단하게 데이터를 분석할 수 있다는 점을 보여주고 싶었습니다. 이를 계기로 pandas에 매력을 느꼈거나 더 배워야겠다는 생각이 들었다면 <모두의 데이터 과학 with 파이썬(길벗, 2017)>과 같이 전문적인 책을 통해 더 깊이 있는 내용을 배울 것을 권장합니다.
