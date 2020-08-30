@@ -1113,3 +1113,68 @@ B열의 값이 0.4보다 큰 값이라는 조건이 True인 데이터들로만 �
 |**1**|0|1|2|3|6|
 
     사실 이것은 numpy의 기능인데 pandas에서도 동일하게 적용됩니다.
+
+먼저 행 방향 축을 기준으로 한 연산에 대해 알아보겠습니다.
+전체 행에 대해서 A열의 값을 B열의 값으로 나눈 후, 그 결과를 새로 만든 D열에 저장한다면, 다음과 같이 간단하게 코드를 작성할 수 있습니다.
+```python
+    import pandas as pd
+    import numpy as np
+    index = pd.date_range('1/1/2000', periods=8)
+    df = pd.DataFrame(np.random.rand(8,3), index=index, columns=list('ABC'))
+    df['D'] = df['A'] / df["B"]  # A열의 값을 B열의 값으로 나눈 값을 D열에 저장
+    df
+```
+
+[그림 15-12]
+
+간단하죠? 다음은 열 방향 축을 기준으로 계산하는 예를 살펴보겠습니다.
+다음 코드는 df 데이터 프레임에서 행 우선으로 합을 구하고, 그 결과를 E라는 열을 생성해서 저장하는 코드입니다. head() 함수는 많은 데이터 중 처음 5개의 데이터만 확인하고 싶을 때 사용하는 함수로, 많은 양의 데이터의 형태를 확인할 때 유용합니다.
+```python
+    import pandas as pd
+    import numpy as np
+
+    index = pd.date_range('1/1/2000', periods=8)
+    df = pd.DataFrame(np.random.rand(8,3), index=index, columns=list('ABC'))
+    df['D'] = df['A'] / df["B"]
+    df['E'] = np.sum(df, axis=1)  # 행 우선 계산 값을 E열에 저장
+    df.head()
+```
+
+[그림 15-13]
+
+다음은 전체 데이터에 대해서 열 우선 계산을 하는 방법입니다.
+아까는 1개의 열을 1개의 열로 나누는 계산이었기 때문에 산술 연산자를 사용할 수 있었지만 여러 개의 열에 대한 계산을 하려면 pandas 라이브러리를 사용해야 합니다.
+예를 들어 전체 데이터를 A열의 값으로 뺄 때는 sub() 함수를 사용합니다.
+```python
+    import pandas as pd
+    import numpy as np
+
+    index = pd.date_range('1/1/2000', periods=8)
+    df = pd.DataFrame(np.random.rand(8,3), index=index, columns=list('ABC'))
+    df['D'] = df['A'] / df["B"]
+    df['E'] = np.sum(df, axis=1)
+    df = df.sub(df['A'], axis=0)  # A열의 데이터를 기준으로 열 우선 계산
+    df.head()
+```
+
+[그림 15-14]
+
+A열 값을 기준으로 전체 데이터에 대한 뺄셈이 이루어졌기 때문에 A열 값은 모두 0이 되며, B열 값도 기존의 값에서 A열 값만큼 뺀 값이 저장된 것을 확인할 수 있습니다.
+데이터 전체를 C열 값으로 나눌 때는 div() 함수를 사용합니다. 그리고 데이터 프레임을 CSV 파일로도 쉽게 저장할 수도 있습니다.
+```python
+    import pandas as pd
+    import numpy as np
+
+    index = pd.date_range('1/1/2000', periods=8)
+    df = pd.DataFrame(np.random.rand(8,3), index=index, columns=list('ABC'))
+    df['D'] = df['A'] / df["B"]
+    df['E'] = np.sum(df, axis=1)
+    df = df.sub(df['A'], axis=0)
+    df = df.div(df['C'], axis=0)   # C열 데이터를 기준으로 열 우선 계산
+    df.to_csv('test.csv')          # 데이터 프레임을 test.csv 파일로 저장
+    df.head()
+```
+
+[그림 15-15]
+
+코드가 저장된 폴더에 가면 test.csv 파일이 생겼을 것입니다. 클릭해서 열어보세요.
