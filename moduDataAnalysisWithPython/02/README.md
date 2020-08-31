@@ -22,9 +22,9 @@ UNIT 06 기온 데이터를 다양하게 시각화하기
 
 ----------------------------------------------
 
-##UNIT 04 기본 그래프 그리기
+## UNIT 04 기본 그래프 그리기
 
-###1. 'matplotlib 라이브러리'란?
+### 1. 'matplotlib 라이브러리'란?
 > matplotlib 라이브러리는 파이썬에서 2D 형태의 그래프, 이미지 등을 그릴 때 사용하는 것으로, 실제 과학 컴퓨팅 연구 분야나 인공지능 연구 분야에서 많이 활용됨
 
 * [matplotlib 홈페이지](https://matplotlib.org, "matplotlib 홈페이지")
@@ -40,7 +40,7 @@ import matplotlib.pyplot
 import matplotlib.pyplot as plt
 ```
 
-###2. 기본 그래프 그리기
+### 2. 기본 그래프 그리기
 
 > *plot()* 함수는 직선 또는 꺾은선 형태의 그래프를 그릴 때 사용
 
@@ -51,7 +51,7 @@ import matplotlib.pyplot as plt
 
 **예시 추가**
 
-###3. 그래프에 옵션 추가하기
+### 3. 그래프에 옵션 추가하기
 
 * 그래프에 제목 넣기
 > *title()* 함수는 제목을 넣는 함수
