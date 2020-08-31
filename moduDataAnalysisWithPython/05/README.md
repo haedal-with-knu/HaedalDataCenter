@@ -12,15 +12,16 @@ matplotlib 홈페이지는 데이터 시각화와 관련된 다양한 예시를 
 matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합니다.
 
 ![그림 13_1](https://user-images.githubusercontent.com/70426821/91709894-617b3700-ebbe-11ea-9261-c899671ee659.jpg)
+**<U>그림 13-1</U>** matplotlib 홈페이지
 
 튜토리얼(tutorial)은 자습서 또는 안내서 성격의 문서로, matplotlib 라이브러리 뿐만 아니라 새로운 내용을 배울 때 '(찾고자 하는)키워드 tutorial'과 같은 형태로 검색하면 처음 시작할 때 큰 도움이 되는 내용을 찾을 수 있습니다.
 연습 삼아서 검색 창에 numpy tutorial이라는 검색어를 입력해보세요.
 
-![그림 13-2](C:\Users\USER\Documents\GitHub\img\13_2.png)
+![그림 13_2](https://user-images.githubusercontent.com/70426821/91709989-81125f80-ebbe-11ea-9392-ab5b31ba4d3e.png)
 
 검색 결과 페이지에서 스크롤을 내려 Pyplot tutorial을 클릭합니다.
 
-![그림 13-3]
+![그림 13_3](https://user-images.githubusercontent.com/70426821/91710036-96878980-ebbe-11ea-950c-be1e46920e23.png)
 
 내용을 살펴보면 지금까지 배운 내용들이 잘 정리되어 있습니다. 그중에서 다음과 같은 코드와 실행 결과가 보입니다.
 ```python
@@ -30,7 +31,7 @@ matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합�
     plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
     plt.show()
 ```
-[그림 13-4]
+![그림 13_4](https://user-images.githubusercontent.com/70426821/91710041-98514d00-ebbe-11ea-9096-fe889b7d7ce8.png)
 
 코드 2행을 보니 numpy 라이브러리를 np라는 별명으로 부르는 것을 확인할 수 있습니다. 이 코드는 파이썬 리스트를 사용해서 다음과 같이 구현할 수 있습니다.
 ```python
@@ -149,7 +150,7 @@ numpy 라이브러리에는 다양한 서브(sub) 라이브러리가 있는데 �
     plt.hist(dice, bins = 6)
     plt.show()
 ```
-[그림 13_5]
+![그림 13_5](https://user-images.githubusercontent.com/70426821/91710047-9b4c3d80-ebbe-11ea-942f-814dee766baa.png)
 
 두 코드를 비교하니 결과는 같지만, numpy를 사용한 코드가 더 간결합니다.
 그러고 반복 횟수를 10번이 아니라 100만 번으로 바꿔서 각각의 코드를 실행하면 numpy를 사용한 코드의 실행 속도가 훨씬 빠르다는 것을 느낄 수 있습니다.
@@ -161,7 +162,7 @@ numpy 라이브러리에는 다양한 서브(sub) 라이브러리가 있는데 �
     plt.hist(dice, bins = 6)  #0,1,2,3,4,5 중 랜덤으로 추출한 숫자를 히스토그램 표현
     plt.show()
 ```
-[그림 13_6]
+![그림 13_6](https://user-images.githubusercontent.com/70426821/91710052-9d160100-ebbe-11ea-8e07-c8b99127ced5.png)
 
 반복 횟수를 늘려 더 많은 개수의 숫자를 랜덤으로 추출한 결과를 히스토그램으로 나타냈습니다. 그림 13-5와는 다르게 우리가 설정한 확률에 따라 각각의 값들이 나온 것을 확인할 수 있습니다.
 다음은 Unit 10에서 그렸던 버블 차트를 numpy 라이브러리를 활용해서 다시 그리는 코드입니다. 반복문을 사용하지 않아서 코드가 간결해진 것을 느낄 수 잇을 겁니다.
