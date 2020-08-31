@@ -49,8 +49,6 @@ import matplotlib.pyplot as plt
 2. plt.plot([x축 데이터], [y축 데이터]) : plot() 함수에 데이터 입력하기
 3. plt.show() : 그래프 보여주기
 
-![1](02/4-1.jpg)
-
 ### 3. 그래프에 옵션 추가하기
 
 * 그래프에 제목 넣기
@@ -102,3 +100,132 @@ plt.plot([데이터], 'g^')
 * 데이터 읽어오기
 
 ```python
+import csv
+
+f = open('seoul.csv')
+data = csv.reader(f)
+
+for row in data :
+    print(row)
+```
+
+> next() 함수를 사용해 데이터의 맨 윗줄에 있는 헤더 부분을 제외시킨 후, 최고 기온 데이터만 출력
+
+```python
+import csv
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+
+for row in data :
+    print(row[-1])
+```
+
+* 데이터 리스트에 저장하기
+
+```python
+import csv
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+result = [] # 최고 기온 데이터를 저장할 리스트 생성
+
+for row in data :
+    if row[-1] != '' : # 최고 기온 데이터 값이 존재한다면
+        result.append(float(row[-1])) # result 리스트에 최고 기온 값 추가
+print(result)
+```
+
+### 2. 데이터 시각화하기
+
+### 3. 날짜 데이터 추출하기
+
+> split() 문자열 함수는 사용자가 설정하는 특정 문자를 기준으로 문자열을 분리
+
+```python
+import csv
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+result = []
+
+for row in data :
+    if row[-1] != '' : # 최고 기온 값이 존재한다면
+        if row[0].split('-')[1] == '08' : # 8월에 해당하는 값이라면
+            result.append(float(row[-1])) # result 리스트에 최고 기온 값 추가
+
+import matplotlib.pyplot as plt
+plt.plot(result, 'hotpink') # result 리스트에 저장된 값을 hotpink 색으로 그리기
+plt.show() #그래프 나타내기
+```
+
+이제는 매년 돌아오는 생일을 기준으로 설정
+
+```python
+for row in data :
+    if row[-1] != '' :
+            if row[0].split('-')[1] == '09' and row[0].split('-')[2] == '04' : # 매년 9월 4일의 최고 기온의 데이터 추출
+                result.append(float(row[-1]))
+```
+
+~~9월 4일 내 생일~~
+
+조금 더 자세히 살펴보기 위해 1983년 이후 데이터만 추출
+또한, 최고 기온뿐만 아니라 최저 기온 데이터도 함께 나타내기
+
+```python
+import csv
+import matplotlib.pyplot as plt
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+high = [] # 최고 기온 값을 저장할 리스트 high 생성
+low = [] # 최저 기온 값을 저장할 리스트 low 생성
+
+for row in data :
+    if row[-1] != '' and row[-2] != '' : # 최고 기온 값과 최저 기온 값이 존재한다면
+        if 1983 <= int(row[0].split('-')[0]) : # 1983년 이후 데이터라면
+            if row[0].split('-')[1] == '09' and row[0].split('-')[2] == '04' : # 9월 4일이라면
+                high.append(float(row[-1])) # 최고 기온 값을 high 리스트에 저장
+                low.append(float(row[-2])) # 최저 기온 값을 low 리스트에 저장
+
+import matplotlib.pyplot as plt
+#plt.figure(dpi = 300)
+plt.plot(high, 'hotpink') # high 리스트에 저장된 값을 hotpink 색으로 그리기 
+plt.plot(low, 'skyblue') # low 리스트에 저장된 값을 skyblue 색으로 그리기
+plt.show() # 그래프 나타내기
+```
+
+***내 생일의 기온 변화를 그래프로 그리기***
+
+```python
+import csv
+import matplotlib.pyplot as plt
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+high = [] # 최고 기온 값을 저장할 리스트 high 생성
+low = [] # 최저 기온 값을 저장할 리스트 low 생성
+
+for row in data :
+    if row[-1] != '' and row[-2] != '' : # 최고 기온 값과 최저 기온 값이 존재한다면
+        date = row[0].split('-') # 날짜 값을 – 문자를 기준으로 구분하여 저장
+        if 1983 <= int(date[0]) : # 1983년 이후 데이터라면
+            if date[1] == '02' and date[2] == '14' : # 9월 4일이라면
+                high.append(float(row[-1])) # 최고 기온 값을 high 리스트에 저장
+                low.append(float(row[-2])) # 최저 기온 값을 low 리스트에 저장
+
+                plt.rc('font', family = 'Malgun Gothic') # 맑은 고딕을 기본 글꼴로 설정
+plt.rcParams['axes.unicode_minus'] = False # 마이너스 기호 깨짐 방지
+plt.title('내 생일의 기온 변화 그래프') # 제목 설정
+plt.plot(high, 'hotpink', label = 'high') # high 리스트에 저장된 값을 hotpink 색으로 그리고 레이블을 표시
+
+plt.plot(low, 'skyblue', label = 'low') # low 리스트에 저장된 값을 skyblue 색으로 그리고 레이블을 표시
+plt.legend() # 범례 표시
+plt.show() # 그래프 나타내기
+```
+
