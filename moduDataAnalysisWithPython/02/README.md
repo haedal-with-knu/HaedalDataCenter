@@ -147,6 +147,7 @@ print(result)
 
 ```python
 import csv
+import matplotlib.pyplot as plt
 
 f = open('seoul.csv')
 data = csv.reader(f)
@@ -158,7 +159,6 @@ for row in data :
         if row[0].split('-')[1] == '08' : # 8월에 해당하는 값이라면
             result.append(float(row[-1])) # result 리스트에 최고 기온 값 추가
 
-import matplotlib.pyplot as plt
 plt.plot(result, 'hotpink') # result 리스트에 저장된 값을 hotpink 색으로 그리기
 plt.show() #그래프 나타내기
 ```
@@ -194,8 +194,6 @@ for row in data :
                 high.append(float(row[-1])) # 최고 기온 값을 high 리스트에 저장
                 low.append(float(row[-2])) # 최저 기온 값을 low 리스트에 저장
 
-import matplotlib.pyplot as plt
-#plt.figure(dpi = 300)
 plt.plot(high, 'hotpink') # high 리스트에 저장된 값을 hotpink 색으로 그리기 
 plt.plot(low, 'skyblue') # low 리스트에 저장된 값을 skyblue 색으로 그리기
 plt.show() # 그래프 나타내기
@@ -242,5 +240,112 @@ plt.show() # 그래프 나타내기
 ### 1. 데이터에 질문하기
 
 ### 2. 히스토그램
+
+* hist() 함수
+> 히스토그램은 자료의 분포 상태를 직사각형 모양의 막대 그래프로 나타낸 것으로, 데이터의 빈도에 따라 높이가 결정
+> hist() 함수를 사용하여 데이터로 히스토그램을 그릴 수 있음
+>> 참고) plot() 함수는 꺾은선 그래프
+
+```python
+import matplotlib.pyplot as plt
+plt.hist([1,1,2,3,4,5,6,6,7,8,10])
+plt.show()
+```
+
 ### 3. 기온 데이터를 히스토그램으로 표현하기
+
+1907년부터 2018년까지 수집된 서울의 기온 데이터를 히스토그램으로 표현
+
+```python
+import csv
+import matplotlib.pyplot as plt
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+result = []
+
+for row in data :
+    if row[-1] != '' :
+        result.append(float(row[-1]))
+
+plt.hist(result, bins = 100, color = 'r') # 히스토그램으로 나타내기!
+plt.show()
+```
+
+### 1월과 8월의 데이터를 히스토그램으로 시각화하기
+
+```python
+import csv
+import matplotlib.pyplot as plt
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+
+aug = [] # 8월의 최고 기온 값을 저장할 aug 리스트 생성
+jan = [] # 1월의 최고 기온 값을 저장할 jan 리스트 생성
+
+for row in data :
+    month = row[0].split('-')[1] # '-'로 구분된 값 중 2번째 값을 month에 저장
+    if row[-1] != '' :
+        if month == '08': # 8월달이라면
+            aug.append(float(row[-1])) # aug 리스트에 최고 기온 값 추가
+        if month == '01': # 1월달이라면
+            jan.append(float(row[-1])) # jan 리스트에 최고 기온 값 추가
+
+import matplotlib.pyplot as plt
+plt.hist(aug, bins = 100, color = 'r', label = 'Aug')
+plt.hist(jan, bins = 100, color = 'b', label = 'Jan')
+plt.legend()
+plt.show()
+```
+
 ### 4. 기온 데이터를 상자 그림으로 표현하기
+
+> 상자 그림(boxplot)은 자료의 최댓값, 최솟값, 상위 1/4, 2/4(중앙), 3/4에 위치한 값을 보여주는 그래프
+> boxplot() 함수를 사용하여 데이터로 상자 그림을 그릴 수 있음
+> randint() 함수를 사용하여 임의의 데이터를 만들 수 있음
+
+```python
+import matplotlib.pyplot as plt
+import random
+
+result = []
+for i in range(13) :
+    result.append(random.randint(1,1000))
+print(sorted(result))
+
+plt.boxplot(result)
+plt.show()
+```
+
+### 1월과 8월의 데이터를 상자 그림으로 시각화하기
+
+~~히스토그램을 그릴 때 작성했던 코드에서 그래프의 종류를 의미하는 코드만 수정하면 된다~~
+
+```python
+import csv
+import matplotlib.pyplot as plt
+
+f = open('seoul.csv')
+data = csv.reader(f)
+next(data)
+aug = []
+jan = []
+
+for row in data :
+    month = row[0].split('-')[1]
+    if row[-1] != '' :
+        if month == '08':
+            aug.append(float(row[-1]))
+        if month == '01':
+            jan.append(float(row[-1]))
+
+plt.boxplot([aug,jan]) # 상자 그림으로 나타내기!
+plt.show()
+```
+
+둘째마당 끝!
+
+~~이미지 넣고 싶은데 왜 안 넣어지지 ㅠ~~
