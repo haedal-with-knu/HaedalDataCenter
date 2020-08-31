@@ -49,7 +49,7 @@ import matplotlib.pyplot as plt
 2. plt.plot([x축 데이터], [y축 데이터]) : plot() 함수에 데이터 입력하기
 3. plt.show() : 그래프 보여주기
 
-![4-1](HaedalDataCenter/moduDataAnalysisWithPython/02/4-1.jpg)
+![1](02/4-1.jpg)
 
 ### 3. 그래프에 옵션 추가하기
 
