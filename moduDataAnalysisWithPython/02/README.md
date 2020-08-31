@@ -143,6 +143,8 @@ print(result)
 
 > split() 문자열 함수는 사용자가 설정하는 특정 문자를 기준으로 문자열을 분리
 
+8월 데이터만 나타내기
+
 ```python
 import csv
 
@@ -172,7 +174,7 @@ for row in data :
 
 ~~9월 4일 내 생일~~
 
-조금 더 자세히 살펴보기 위해 1983년 이후 데이터만 추출
+조금 더 자세히 살펴보기 위해 1983년 이후 데이터만 추출  
 또한, 최고 기온뿐만 아니라 최저 기온 데이터도 함께 나타내기
 
 ```python
@@ -201,6 +203,11 @@ plt.show() # 그래프 나타내기
 
 ***내 생일의 기온 변화를 그래프로 그리기***
 
+추가적으로  
+1. Unit 04에서 배웠던 title()함수를 사용하여 제목을 넣고
+2. 한글 폰트 설정 코드 작성
+3. 마이너스 기호 깨짐 
+
 ```python
 import csv
 import matplotlib.pyplot as plt
@@ -212,18 +219,17 @@ high = [] # 최고 기온 값을 저장할 리스트 high 생성
 low = [] # 최저 기온 값을 저장할 리스트 low 생성
 
 for row in data :
-    if row[-1] != '' and row[-2] != '' : # 최고 기온 값과 최저 기온 값이 존재한다면
+    if row[-1] != '' and row[-2] != '' :
         date = row[0].split('-') # 날짜 값을 – 문자를 기준으로 구분하여 저장
-        if 1983 <= int(date[0]) : # 1983년 이후 데이터라면
-            if date[1] == '02' and date[2] == '14' : # 9월 4일이라면
-                high.append(float(row[-1])) # 최고 기온 값을 high 리스트에 저장
-                low.append(float(row[-2])) # 최저 기온 값을 low 리스트에 저장
+        if 1983 <= int(date[0]) :
+            if date[1] == '02' and date[2] == '14' :
+                high.append(float(row[-1]))
+                low.append(float(row[-2]))
 
-                plt.rc('font', family = 'Malgun Gothic') # 맑은 고딕을 기본 글꼴로 설정
+plt.rc('font', family = 'Malgun Gothic') # 맑은 고딕을 기본 글꼴로 설정                
 plt.rcParams['axes.unicode_minus'] = False # 마이너스 기호 깨짐 방지
 plt.title('내 생일의 기온 변화 그래프') # 제목 설정
 plt.plot(high, 'hotpink', label = 'high') # high 리스트에 저장된 값을 hotpink 색으로 그리고 레이블을 표시
-
 plt.plot(low, 'skyblue', label = 'low') # low 리스트에 저장된 값을 skyblue 색으로 그리고 레이블을 표시
 plt.legend() # 범례 표시
 plt.show() # 그래프 나타내기
