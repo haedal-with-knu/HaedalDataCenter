@@ -12,7 +12,7 @@ matplotlib 홈페이지는 데이터 시각화와 관련된 다양한 예시를 
 matplotlib.org에 접속한 후 상단에 있는 tutorials 메뉴를 클릭합니다.
 
 ![그림 13_1](https://user-images.githubusercontent.com/70426821/91709894-617b3700-ebbe-11ea-9261-c899671ee659.jpg)
-**<U>그림 13-1</U>** matplotlib 홈페이지
+**<U>그림 13-1<\U>** matplotlib 홈페이지
 
 튜토리얼(tutorial)은 자습서 또는 안내서 성격의 문서로, matplotlib 라이브러리 뿐만 아니라 새로운 내용을 배울 때 '(찾고자 하는)키워드 tutorial'과 같은 형태로 검색하면 처음 시작할 때 큰 도움이 되는 내용을 찾을 수 있습니다.
 연습 삼아서 검색 창에 numpy tutorial이라는 검색어를 입력해보세요.
