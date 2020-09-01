@@ -49,6 +49,8 @@ import matplotlib.pyplot as plt
 2. plt.plot([x축 데이터], [y축 데이터]) : plot() 함수에 데이터 입력하기
 3. plt.show() : 그래프 보여주기
 
+![4-1](./img/4-1.jpg)
+
 ### 3. 그래프에 옵션 추가하기
 
 * 그래프에 제목 넣기
