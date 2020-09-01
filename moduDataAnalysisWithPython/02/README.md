@@ -68,6 +68,8 @@ plt.plot([x축 데이터], [y축 데이터], label='레이블 값')
 plt.legend()
 ```
 
+![4-2](./img/4-2.jpg)
+
 * 그래프 색상 바꾸기
 > color 속성 추가
 >> r == red, g == green, b == blue, k == black, y == yellow 등등
@@ -83,6 +85,8 @@ plt.plot(~~~, color='원하는 색상')
 plt.plot(~~~, linestyle='-- or :')
 ```
 
+![4-3](./img/4-3.jpg)
+
 * 마커 모양 바꾸기
 
 ```python
@@ -92,6 +96,8 @@ plt.plot([데이터], 'r.')
 # 초록색 삼각형 마커 그래프
 plt.plot([데이터], 'g^')
 ```
+
+![4-4](./img/4-4.jpg)
 
 ----------------------------------------------
 
