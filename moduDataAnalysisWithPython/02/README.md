@@ -119,6 +119,8 @@ for row in data :
     print(row)
 ```
 
+![5-1](./img/5-1.jpg)
+
 > next() 함수를 사용해 데이터의 맨 윗줄에 있는 헤더 부분을 제외시킨 후, 최고 기온 데이터만 출력
 
 ```python
@@ -131,6 +133,8 @@ next(data)
 for row in data :
     print(row[-1])
 ```
+
+![5-2](./img/5-2.jpg)
 
 * 데이터 리스트에 저장하기
 
@@ -173,6 +177,8 @@ plt.plot(result, 'hotpink') # result 리스트에 저장된 값을 hotpink 색�
 plt.show() #그래프 나타내기
 ```
 
+![5-3](./img/5-3.jpg)
+
 이제는 매년 돌아오는 생일을 기준으로 설정
 
 ```python
@@ -181,6 +187,8 @@ for row in data :
             if row[0].split('-')[1] == '09' and row[0].split('-')[2] == '04' : # 매년 9월 4일의 최고 기온의 데이터 추출
                 result.append(float(row[-1]))
 ```
+
+![5-4](./img/5-4.jpg)
 
 ~~9월 4일 내 생일~~
 
@@ -208,6 +216,8 @@ plt.plot(high, 'hotpink') # high 리스트에 저장된 값을 hotpink 색으로
 plt.plot(low, 'skyblue') # low 리스트에 저장된 값을 skyblue 색으로 그리기
 plt.show() # 그래프 나타내기
 ```
+
+![5-5](./img/5-5.jpg)
 
 추가적으로  
 1. Unit 04에서 배웠던 title()함수를 사용하여 제목 넣기
@@ -242,6 +252,8 @@ plt.plot(low, 'skyblue', label = 'low') # low 리스트에 저장된 값을 skyb
 plt.legend() # 범례 표시
 plt.show() # 그래프 나타내기
 ```
+
+![5-6](./img/5-6.jpg)
 
 ----------------------------------------------
 
