@@ -1,1 +1,6 @@
-# 07. 통계학과 머신러닝
+![img1](img/01.png)
+![img2](img/02.png)
+![img3](img/03.png)
+![img4](img/04.png)
+![img5](img/05.png)
+![img6](img/06.png)
