@@ -10,5 +10,7 @@ import scipy as sp
 - 1변량 데이터:1가지 종류의 데이터만 가짐 ex.물고기의 몸길이
 ```python
 fish_data = np.array([2,3,3,4,4,4,4,5,5,6])
-fish_data
 ```
+#### 3.1.3 합계와 샘플사이즈
+- 합계값을 계산하는 sp.sum() 또는 np.sum()
+- 샘플 사이즈를 계산하는 파이썬 표준함수 len()
